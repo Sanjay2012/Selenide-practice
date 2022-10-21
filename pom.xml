@@ -62,9 +62,7 @@
           </executions>
           <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>testng_chrome.xml</suiteXmlFile>
-            <suiteXmlFile>testng_firefox.xml</suiteXmlFile>
-            <suiteXmlFile>testng_edge.xml</suiteXmlFile>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
           </suiteXmlFiles>
           <properties>
             <property>

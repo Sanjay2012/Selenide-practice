@@ -15,11 +15,11 @@ import static com.codeborne.selenide.Condition.*;
 
 public class WebriverRunnerClass {
     SoftAssert soft=new SoftAssert();
-    @Parameters("browser")
+   @Parameters("browser")
     @BeforeMethod
     public void setUp(String browser) {
         Configuration.browser=browser;
-        Configuration.headless=true;
+        Configuration.headless=false;
     }
 
     @Test

@@ -19,7 +19,7 @@ public class LaunchBrowser {
     @Parameters("browser")
     public void setup(String browser) {
         Configuration.browser= browser;
-        Configuration.headless=true;
+        Configuration.headless=false;
     }
 
     @Test

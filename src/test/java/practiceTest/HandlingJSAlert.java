@@ -2,6 +2,7 @@ package practiceTest;
 
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -24,12 +25,12 @@ public class HandlingJSAlert {
     @BeforeMethod
     public void setUp(String browser) {
         Configuration.browser=browser;
-        Configuration.headless=true;
+        Configuration.headless=false;
         Configuration.baseUrl="https://demoqa.com";
 
     }
 
-    @Test(priority = 1)
+    @Test
     public void acceptAlertAndGetText() {
         open("/alerts");
         WebDriverRunner.getWebDriver().manage().window().maximize();
@@ -42,7 +43,7 @@ public class HandlingJSAlert {
 
     }
 
-    @Test(priority = 2)
+    @Test
     public void acceptTimerAlertAndGetText() throws InterruptedException {
         open("/alerts");
         WebDriverRunner.getWebDriver().manage().window().maximize();
@@ -55,7 +56,7 @@ public class HandlingJSAlert {
         alt.accept();
     }
 
-    @Test(priority = 3)
+    @Test
     public void confirmAlertAndGetText() throws InterruptedException {
         open("/alerts");
         WebDriverRunner.getWebDriver().manage().window().maximize();
@@ -68,7 +69,7 @@ public class HandlingJSAlert {
         soft.assertTrue(WebDriverRunner.source().contains("Ok"));
     }
 
-    @Test(priority = 4)
+    @Test
     public void cancelAlertAndGetText() {
         open("/alerts");
         WebDriverRunner.getWebDriver().manage().window().maximize();
@@ -81,12 +82,13 @@ public class HandlingJSAlert {
         soft.assertTrue(WebDriverRunner.source().contains("Cancel"));
     }
 
-    @Test(priority = 5)
+    @Test
     public void handleProptAlertAndEnterText() {
         open("/alerts");
         WebDriverRunner.getWebDriver().manage().window().maximize();
         WebDriverRunner.getWebDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        $(By.id("promtButton")).shouldBe(visible).click();
+        SelenideElement promptBtn = $(By.cssSelector("#promtButton"));
+        executeJavaScript("arguments[0].click();", promptBtn);
         Alert alt = switchTo().alert();
         String alertText = alt.getText();
         soft.assertEquals(alertText, "Please enter your name");
@@ -98,7 +100,6 @@ public class HandlingJSAlert {
 
     @AfterMethod
     public void tearDown() {
-
         closeWindow();
     }
 }

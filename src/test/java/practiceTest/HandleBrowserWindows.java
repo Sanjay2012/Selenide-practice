@@ -21,7 +21,7 @@ public class HandleBrowserWindows {
     @BeforeMethod
     public void setUp(String browser) {
         Configuration.browser=browser;
-        Configuration.headless=true;
+        Configuration.headless=false;
         Configuration.baseUrl = "https://demoqa.com";
 
     }

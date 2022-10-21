@@ -24,7 +24,7 @@ public class JSAlert {
     @BeforeMethod
     public void setUp(String browser) {
         Configuration.browser=browser;
-        Configuration.headless=true;
+        Configuration.headless=false;
         Configuration.baseUrl="https://the-internet.herokuapp.com";
 
     }

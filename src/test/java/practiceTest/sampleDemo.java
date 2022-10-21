@@ -21,7 +21,7 @@ public class sampleDemo {
     @Parameters("browser")
     public void setup(String browser) {
         Configuration.browser= browser;
-        Configuration.headless=true;
+        Configuration.headless=false;
         Configuration.baseUrl="https://www.lambdatest.com";
 
     }

@@ -14,11 +14,11 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 public class CloseBrowser {
     SoftAssert soft=new SoftAssert();
-    @Parameters("browser")
+   @Parameters("browser")
     @BeforeMethod
     public void setUp(String browser) {
         Configuration.browser=browser;
-        Configuration.headless=true;
+        Configuration.headless=false;
     }
 
     @Test
